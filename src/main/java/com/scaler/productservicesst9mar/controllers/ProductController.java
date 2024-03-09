@@ -1,6 +1,8 @@
 package com.scaler.productservicesst9mar.controllers;
 
 import com.scaler.productservicesst9mar.models.Product;
+import com.scaler.productservicesst9mar.services.FakeStoreProductService;
+import com.scaler.productservicesst9mar.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,6 +16,13 @@ import java.util.List;
 //    receives a request at particular endpoint
 @RestController
 public class ProductController {
+
+    private ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
 
     // Whenever anyone sends a
     // GET request at {MY_SERVER}/hello
@@ -43,7 +52,7 @@ public class ProductController {
     @GetMapping("/products/{id}")
     public Product getSingleProduct(@PathVariable("id") Long id) {
 
-        return new Product();
+        return productService.getSingleProduct(id);
     }
 
 //    @PostMapping("/products")
