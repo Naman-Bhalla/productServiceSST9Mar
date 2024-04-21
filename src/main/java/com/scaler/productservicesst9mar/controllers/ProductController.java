@@ -49,7 +49,7 @@ public class ProductController {
     // URL Path: /products/1
     // /products/hi
     // /products/51
-    @GetMapping("/products/{id}")
+    @GetMapping("/products/get/{id}")
     public Product getSingleProduct(@PathVariable("id") Long id) {
 
         return productService.getSingleProduct(id);
